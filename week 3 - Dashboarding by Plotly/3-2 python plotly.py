@@ -6,7 +6,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 
 # Read the airline data into pandas dataframe
-spacex_df = pd.read_csv("spacex_launch_dash.csv")
+spacex_df = pd.read_csv("G:\\LIBRARY\\Researches\\ibm_dataScience_applied_capstone\\week 3 - Dashboarding by Plotly\\spacex_launch_dash.csv")
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
@@ -68,10 +68,10 @@ def build_graph(site_dropdown):
 
 # TASK 4:
 # Add a callback function for `site-dropdown` and `payload-slider` as inputs, `success-payload-scatter-chart` as output
-@app.callback(
-    Output(component_id='success-payload-scatter-chart', component_property='figure'),
-    [Input(component_id='site-dropdown', component_property='value'),
-    Input(component_id='payload-slider', component_property='value')])
+@app.callback( [Input(component_id='site-dropdown', component_property='value'),
+    Input(component_id='payload-slider', component_property='value')],
+    Output(component_id='success-payload-scatter-chart', component_property='figure')
+   )
 
 def update_graph(site_dropdown, payload_slider):
     if site_dropdown == 'ALL':
